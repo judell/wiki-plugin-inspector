@@ -40,8 +40,18 @@ debugger;
 	  for ( var i = 0; i < paras.length; i++ ) {
         var dataId = paras[i].parentNode.getAttribute('data-id');
         var revs = journal.filter(matchesId(dataId));
-		var p = paras[i].innerText.substr(0,50) + ' ...';
-		s += '<p><b>' + i + '</b>: ' + p + '<div>' + dataId + '</div></p>';
+		var p = paras[i].innerText.substr(0,30) + ' ...';
+		s += '<p>' + p;
+        s += '<blockquote>';
+        for ( var j = 0; j < revs.length; j++ ) {
+          if ( revs[j].item.hasOwnProperty('text') ) {
+            s += '<div>';
+            s += j + ': ' + revs[j].item.text;
+            s += '</div>';
+            }
+          }
+        s += '</blockquote>';
+        s += '</p>';
 	  }
 	  return s;
 	}
