@@ -41,17 +41,19 @@ debugger;
         var dataId = paras[i].parentNode.getAttribute('data-id');
         var revs = journal.filter(matchesId(dataId));
 		var p = paras[i].innerText.substr(0,30) + ' ...';
-		s += '<p>' + p;
-        s += '<blockquote para-id="' + dataId + '">';
+		s += '<div style="background-color:lightyellow;">';
+        s += '<a title="toggle versions" href="javascript:window.plugins.inspector.toggle(' + "'" + dataId + "'" + ')">' + '+</a>';
+        s += p;
+        s += '<div class="wiki-paragraph-history" style="background-color:lightyellow;display:none" para-id="' + dataId + '">';
         for ( var j = 0; j < revs.length; j++ ) {
           if ( revs[j].item.hasOwnProperty('text') ) {
-            s += '<div>';
+            s += '<div style="margin-left:20px">';
             s += j + ': ' + revs[j].item.text;
             s += '</div>';
             }
           }
-        s += '</blockquote>';
-        s += '</p>';
+        s += '</div>';
+        s += '</div>';
 	  }
 	  return s;
 	}
@@ -59,7 +61,7 @@ debugger;
   var bind, emit, toggle;
 
   toggle = function toggle(id) {
-        var element = $('blockquote[para-id="' + id + '"]');
+        var element = $('.wiki-paragraph-history[para-id="' + id + '"]');
         if ( element.css('display') == 'block' )
            element.css('display','none');
         else
@@ -67,7 +69,7 @@ debugger;
       }
 
   emit = function($item, item) {
-    return $item.append("<div style=\"background-color:#eee;padding:15px;\">Inspector!</div>");
+    return $item.append('<p style="background-color:lightyellow"><b>Version Inspector</b></p>');
   };
 
   bind = function($item, item) {
