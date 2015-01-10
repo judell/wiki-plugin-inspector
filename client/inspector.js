@@ -42,7 +42,7 @@ debugger;
         var revs = journal.filter(matchesId(dataId));
 		var p = paras[i].innerText.substr(0,30) + ' ...';
 		s += '<p>' + p;
-        s += '<blockquote>';
+        s += '<blockquote para-id="' + dataId + '">';
         for ( var j = 0; j < revs.length; j++ ) {
           if ( revs[j].item.hasOwnProperty('text') ) {
             s += '<div>';
@@ -56,7 +56,15 @@ debugger;
 	  return s;
 	}
 
-  var bind, emit;
+  var bind, emit, toggle;
+
+  toggle = function toggle(id) {
+        var element = $('blockquote[para-id="' + id + '"]');
+        if ( element.css('display') == 'block' )
+           element.css('display','none');
+        else
+           element.css('display','block');
+      }
 
   emit = function($item, item) {
     return $item.append("<div style=\"background-color:#eee;padding:15px;\">Inspector!</div>");
@@ -74,13 +82,13 @@ debugger;
   if (typeof window !== "undefined" && window !== null) {
     window.plugins.inspector = {
       emit: emit,
-      bind: bind
+      bind: bind,
+      toggle: toggle
     };
   }
 
   if (typeof module !== "undefined" && module !== null) {
     module.exports = {
-      expand: expand
     };
   }
 
