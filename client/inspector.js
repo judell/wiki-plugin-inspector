@@ -42,15 +42,15 @@
 		s += '<div style="background-color:lightyellow;">';
         s += '<a title="toggle versions" href="javascript:window.plugins.inspector.toggle(' + "'" + dataId + "'" + ')">' + '+</a>';
         s += p;
-        s += '<p class="wiki-paragraph-history" style="background-color:lightyellow;display:none" para-id="' + dataId + '">';
+        s += '<div class="wiki-paragraph-history" style="background-color:lightyellow;display:none" para-id="' + dataId + '">';
         for ( var j = 0; j < revs.length; j++ ) {
           if ( revs[j].item.hasOwnProperty('text') ) {
-            s += '<div style="margin-left:20px">';
+            s += '<p style="margin-left:20px">';
             s += j + ': ' + revs[j].item.text;
-            s += '</div>';
+            s += '</p><hr>';
             }
           }
-        s += '</p>';
+        s += '</div>';
         s += '</div>';
 	  }
 	  return s;
