@@ -42,7 +42,7 @@
 		s += '<div style="background-color:lightyellow;">';
         s += '<a title="toggle versions" href="javascript:window.plugins.inspector.toggle(' + "'" + dataId + "'" + ')">' + '+</a>';
         s += p;
-        s += '<div class="wiki-paragraph-history" style="background-color:lightyellow;display:none" para-id="' + dataId + '">';
+        s += '<p class="wiki-paragraph-history" style="background-color:lightyellow;display:none" para-id="' + dataId + '">';
         for ( var j = 0; j < revs.length; j++ ) {
           if ( revs[j].item.hasOwnProperty('text') ) {
             s += '<div style="margin-left:20px">';
@@ -50,7 +50,7 @@
             s += '</div>';
             }
           }
-        s += '</div>';
+        s += '</p>';
         s += '</div>';
 	  }
 	  return s;
