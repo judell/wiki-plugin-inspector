@@ -72,6 +72,7 @@
 
   bind = function($item, item) {
       return $('body').on('new-neighbor-done', function(e, site) {
+        $item.empty();
         journal = getJournal();
         var _results = [];
         _results.push($item.append(getParas($item,journal)));
