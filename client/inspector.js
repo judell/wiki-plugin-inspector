@@ -4,9 +4,9 @@
 
    function getJournal() {
     var json = '';
-    var host = location.origin;
+    var host = location.host;
     var page = location.pathname.match(/[^\/]+$/)[0];
-    var url = host + '/' + page + '.json';
+    var url = 'http://' + host + '/' + page + '.json';
 
 	$.ajax({
 	  dataType: "json",
@@ -17,12 +17,10 @@
     async: false
 	});
 
-	return json.journal;
+return json.journal;
 	}
 
 	function getParas($item, journal) {
-console.log('getParas');
-
 	  function matchesId(id) {
 		  return function(element) {
             if ( ! element.hasOwnProperty('item') )
@@ -54,7 +52,6 @@ console.log('getParas');
             s += '<p style="margin-left:20px">';
             var text = revs[j].item.text;
             if ( j > 0 ) {
-				debugger;
 				var dmp = new diff_match_patch();
 				text = dmp.diff_main(revs[j-1].item.text, text);
 				dmp.diff_cleanupSemantic(text);
