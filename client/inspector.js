@@ -53,7 +53,7 @@
             if ( j > 0 ) {
 				debugger;
 				var dmp = new diff_match_patch();
-				text = dmp.diff_main(text, revs[j-1].item.text);
+				text = dmp.diff_main(revs[j-1].item.text, text);
 				dmp.diff_cleanupSemantic(text);
 				text = dmp.diff_prettyHtml(text);
             }
