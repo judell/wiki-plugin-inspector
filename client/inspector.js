@@ -58,7 +58,7 @@
 				text = dmp.diff_prettyHtml(text);
             }
            
-            s += j + ': ' + text;
+            s += j+1 + ': ' + text;
             s += '</p><hr>';
             }
           }
