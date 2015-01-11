@@ -26,7 +26,7 @@
 		  return function(element) {
             if ( ! element.hasOwnProperty('item') )
 				return 0;
-            if ( element.type != 'edit') 
+            if ( element.item.type != 'paragraph') 
 				return 0;
             var item = element.item;
 			return item.hasOwnProperty('id') && item.id == id;
@@ -40,7 +40,7 @@
 	  for ( var i = 0; i < paras.length; i++ ) {
         var dataId = paras[i].parentNode.getAttribute('data-id');
         var revs = journal.filter(matchesId(dataId));
-        if ( revs == 0 )
+        if ( revs.length <= 1 )
 			continue;
 		var p = paras[i].innerText.substr(0,30) + ' ...' + ' (' + revs.length + ')';
 		s += '<div style="background-color:lightyellow;">';
