@@ -1,5 +1,12 @@
 {
   "title": "About Inspector Plugin",
-  "story": ,
-  "journal": 
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "dee7dd46e18786d6",
+      "text": "The Version Inspector shows the history of the paragraphs in a page."
+    }
+	],
+  "journal": []
 }
+

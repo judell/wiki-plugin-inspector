@@ -1,7 +1,6 @@
 (function() {
 
    function getJournal() {
-debugger;
     var json = '';
     var host = location.origin;
     var page = location.pathname.match(/[^\/]+$/)[0];
@@ -16,11 +15,10 @@ debugger;
     async: false
 	});
 
-  return json.journal;
-  }
+	return json.journal;
+	}
 
 	function getParas($item, journal) {
-      debugger;
 
 	  function matchesId(id) {
           console.log(id);
