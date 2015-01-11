@@ -40,6 +40,8 @@
 	  for ( var i = 0; i < paras.length; i++ ) {
         var dataId = paras[i].parentNode.getAttribute('data-id');
         var revs = journal.filter(matchesId(dataId));
+        if ( revs == 0 )
+			continue;
 		var p = paras[i].innerText.substr(0,30) + ' ...' + ' (' + revs.length + ')';
 		s += '<div style="background-color:lightyellow;">';
         s += '<a title="toggle versions" href="javascript:window.plugins.inspector.toggle(' + "'" + dataId + "'" + ')">' + '+</a>';
