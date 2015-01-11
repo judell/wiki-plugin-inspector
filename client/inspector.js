@@ -21,6 +21,7 @@
 	}
 
 	function getParas($item, journal) {
+console.log('getParas');
 
 	  function matchesId(id) {
 		  return function(element) {
@@ -42,7 +43,7 @@
         var revs = journal.filter(matchesId(dataId));
         if ( revs.length <= 1 )
 			continue;
-		var p = paras[i].innerText.substr(0,30) + ' ...' + ' (' + revs.length + ')';
+		var p = $(paras[i]).text().substr(0,30) + ' ...' + ' (' + revs.length + ')';
 		s += '<div style="background-color:lightyellow;">';
         s += '<a title="toggle versions" href="javascript:window.plugins.inspector.toggle(' + "'" + dataId + "'" + ')">' + '+</a>';
         s += p;
@@ -87,6 +88,7 @@
 
   bind = function($item, item) {
       return $('body').on('new-neighbor-done', function(e, site) {
+debugger;
         $item.empty();
 		$item.append(headline);
         journal = getJournal();
