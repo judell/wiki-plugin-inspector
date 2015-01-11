@@ -1,5 +1,7 @@
 (function() {
 
+   var headline = '<p style="background-color:lightyellow"><b>Version Inspector</b></p>';
+
    function getJournal() {
     var json = '';
     var host = location.origin;
@@ -67,12 +69,13 @@
       }
 
   emit = function($item, item) {
-    return $item.append('<p style="background-color:lightyellow"><b>Version Inspector</b></p>');
+    return $item.append(headline);
   };
 
   bind = function($item, item) {
       return $('body').on('new-neighbor-done', function(e, site) {
         $item.empty();
+		$item.append(headline);
         journal = getJournal();
         var _results = [];
         _results.push($item.append(getParas($item,journal)));
