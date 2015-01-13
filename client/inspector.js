@@ -1,6 +1,8 @@
 (function() {
 
-    var headline = '<p style="background-color:lightyellow"><b>Version Inspector</b></p>';
+    var headline = '<p style="background-color:lightyellow"><b>Version Inspector</b> </p>';
+
+    var loaded = false;
 
     function getJournal() {
         var json = '';
@@ -85,13 +87,15 @@
 
     bind = function($item, item) {
         return $('body').on('new-neighbor-done', function(e, site) {
+            if ( loaded == true ) return;
+            loaded = true;
             debugger;
             $item.empty();
             $item.append(headline);
             journal = getJournal();
             var _results = [];
             _results.push($item.append(getParas($item, journal)));
-            return _results;
+            return _results; 
         });
     };
 
