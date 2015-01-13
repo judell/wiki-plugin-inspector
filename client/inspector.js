@@ -89,7 +89,6 @@
         return $('body').on('new-neighbor-done', function(e, site) {
             if ( loaded == true ) return;
             loaded = true;
-            debugger;
             $item.empty();
             $item.append(headline);
             journal = getJournal();
