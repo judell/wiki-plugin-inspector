@@ -8,11 +8,7 @@
     "federated wiki",
     "plugin"
   ],
-  "author": {
-    "name": "Jon Udell",
-    "email": "jon@jonudell.info",
-    "url": "http://jonudell.net"
-  },
+  "author": "Jon Udell <jon@jonudell.info> (http://jonudell.net)",
   "contributors": [],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,5 +26,13 @@
   },
   "engines": {
     "node": "0.10"
+  },
+  "homepage": "https://github.com/fedwiki/wiki-plugin-inspector",
+  "main": "gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5"
   }
 }
