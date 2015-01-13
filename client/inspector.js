@@ -1,14 +1,12 @@
 (function() {
 
-    var headline = '<p style="background-color:lightyellow"><b>Version Inspector</b> </p>';
-
     var loaded = false;
 
-    function getJournal() {
+    var headline = '<p style="background-color:lightyellow"><b>Version Inspector</b> </p>';
+
+    function getJournal(id) {
         var json = '';
-        var host = location.host;
-        var page = location.pathname.match(/[^\/]+$/)[0];
-        var url = 'http://' + host + '/' + page + '.json';
+        var url = 'http://' + location.host + '/' + id + '.json';
 
         $.ajax({
             dataType: "json",
@@ -22,7 +20,7 @@
         return json.journal;
     }
 
-    function getParas($item, journal) {
+    function getParas($item) {
         function matchesId(id) {
             return function(element) {
                 if (!element.hasOwnProperty('item'))
@@ -34,10 +32,14 @@
             }
         }
 
+
         var s = '';
         var href = $item.parent('.story').prev('.header').find('a').attr('href')
         var id = href.match(/[^\/]+$/)[0];
         var paras = $('#' + id).find('.paragraph p');
+
+        var journal = getJournal(id);
+
         for (var i = 0; i < paras.length; i++) {
             var dataId = paras[i].parentNode.getAttribute('data-id');
             var revs = journal.filter(matchesId(dataId));
@@ -87,13 +89,12 @@
 
     bind = function($item, item) {
         return $('body').on('new-neighbor-done', function(e, site) {
-            if ( loaded == true ) return;
-            loaded = true;
+            if ( loaded ) return;
+            if ( ! loaded ) loaded = true;
             $item.empty();
             $item.append(headline);
-            journal = getJournal();
             var _results = [];
-            _results.push($item.append(getParas($item, journal)));
+            _results.push($item.append(getParas($item)));
             return _results; 
         });
     };
