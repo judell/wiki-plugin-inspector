@@ -1,6 +1,6 @@
 (function() {
 
-    var headline = '<p style="background-color:lightyellow"><b>Version Inspector</b> </p>';
+    var headline = '<p class="title" style="background-color:lightyellow;width:50%"><b>Version Inspector</b> </p>';
 
     function getJournal(id) {
         var json = '';
@@ -74,6 +74,9 @@
     function inspect($item) {
         $item.empty();
         $item.append(headline);
+        $item.find('.title').on('hover', function(e,s) {
+            inspect($item);
+        });
         id = $item.attr('data-id');
         $('.item[data-id="' + id + '"]').append(getParas($item));
     }
@@ -93,7 +96,7 @@
     };
 
     bind = function($item, item) {
-        $item.on('hover', function(e,s) {
+        $item.find('.title').on('hover', function(e,s) {
             inspect($item);
         });
     };
