@@ -1,7 +1,5 @@
 (function() {
 
-    var loaded = false;
-
     var headline = '<p style="background-color:lightyellow"><b>Version Inspector</b> </p>';
 
     function getJournal(id) {
@@ -74,13 +72,10 @@
     }
 
     function inspect($item) {
-        if ( loaded ) return;
-        if ( ! loaded ) loaded = true;
         $item.empty();
         $item.append(headline);
-        var _results = [];
-        _results.push($item.append(getParas($item)));
-        return _results; 
+        id = $item.attr('data-id');
+        $('.item[data-id="' + id + '"]').append(getParas($item));
     }
 
     var bind, emit, toggle, inspect;
@@ -98,8 +93,8 @@
     };
 
     bind = function($item, item) {
-        return $('body').on('new-neighbor-done', function(e, site) {
-            return inspect($item);
+        $item.on('hover', function(e,s) {
+            inspect($item);
         });
     };
 
@@ -107,7 +102,8 @@
         window.plugins.inspector = {
             emit: emit,
             bind: bind,
-            toggle: toggle
+            toggle: toggle,
+            inspect: inspect
         };
     }
 
