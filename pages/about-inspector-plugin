@@ -4,8 +4,14 @@
     {
       "type": "paragraph",
       "id": "dee7dd46e18786d6",
-      "text": "The Version Inspector shows the history of the paragraphs in a page."
+      "text": "The Version Inspector shows the history of the paragraphs in a page. Here is one that you can copy (shift-drag) into your page."
+    },
+    {
+      "type": "inspector",
+      "id": "dee7dd46e18786d7",
+      "text": "to be instantiated"
     }
+
 	],
   "journal": []
 }
