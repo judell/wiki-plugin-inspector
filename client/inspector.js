@@ -73,7 +73,17 @@
         return s;
     }
 
-    var bind, emit, toggle;
+    function inspect($item) {
+        if ( loaded ) return;
+        if ( ! loaded ) loaded = true;
+        $item.empty();
+        $item.append(headline);
+        var _results = [];
+        _results.push($item.append(getParas($item)));
+        return _results; 
+    }
+
+    var bind, emit, toggle, inspect;
 
     toggle = function toggle(id) {
         var element = $('.wiki-paragraph-history[para-id="' + id + '"]');
@@ -89,13 +99,7 @@
 
     bind = function($item, item) {
         return $('body').on('new-neighbor-done', function(e, site) {
-            if ( loaded ) return;
-            if ( ! loaded ) loaded = true;
-            $item.empty();
-            $item.append(headline);
-            var _results = [];
-            _results.push($item.append(getParas($item)));
-            return _results; 
+            return inspect($item);
         });
     };
 
